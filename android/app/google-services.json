@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "797107015395",
+    "project_id": "startgomama",
+    "storage_bucket": "startgomama.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797107015395:android:02a6d9d2279a5ecbc03fd6",
+        "android_client_info": {
+          "package_name": "com.example.gomama_v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797107015395-b9sa22406nhtat8j2027nngroioi786l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKoDLB4LOQ0fHe6LqvvvWE4Vhg7h6Ni4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797107015395-b9sa22406nhtat8j2027nngroioi786l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
