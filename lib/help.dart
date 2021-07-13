@@ -3,6 +3,8 @@ import 'package:gomama_v2/financeChoice.dart';
 import 'package:gomama_v2/financeHelp.dart';
 import 'package:gomama_v2/setting.dart';
 
+/// Here is the main Help Page
+/// Author: Mahida ahmed
 class HelpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

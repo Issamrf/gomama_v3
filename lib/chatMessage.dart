@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gomama_v2/states/Utils.dart';
 
+/// User Data in the Chat
+/// Author: Suada Fejzovic
 
 class MessageField {
   static final String createdAt = 'createdAt';

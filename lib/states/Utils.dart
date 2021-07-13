@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 ///This Class is to transform the out dato to a Json Format in order to transfer them to the Database.
 ///Author: Issam Rafiq

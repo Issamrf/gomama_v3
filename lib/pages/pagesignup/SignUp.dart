@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gomama_v2/pages/pagescreen/Verification.dart';
 import 'package:gomama_v2/states/CurrentUser.dart';
-import 'package:gomama_v2/states/SetAndGetChat.dart';
+
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
@@ -184,9 +183,6 @@ class _SignUpState extends State<SignUp> {
     try {
       String returnString = await currentUser.signUpUser(
           email, password, plz, year1, kids, name, city);
-      SetAndGetChat.isUserLoggedin(true);
-      SetAndGetChat.saveUseremail(email);
-      SetAndGetChat.saveUserName(name);
 
       /* User firebaseUser = FirebaseAuth.instance.currentUser;
       await firebaseUser.sendEmailVerification();*/

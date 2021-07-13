@@ -4,7 +4,8 @@ import 'package:gomama_v2/setting.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// Here is where the user choose between the Financials options
-///Author Nora Kolasinac
+///Author Nora Kolasinac + Mahida ahmed
+
 class FinanceChoice extends StatelessWidget {
   int int1;
   FinanceChoice([this.int1]);

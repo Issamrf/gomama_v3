@@ -1,19 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gomama_v2/models/OurUser.dart';
-import 'package:gomama_v2/states/CurrentUser.dart';
-import 'dart:async';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:gomama_v2/chatMessage.dart';
-import 'chatmessage.dart';
-import 'ChatMessage.dart';
+import 'dart:async';
 
 import 'states/Utils.dart';
 
-//List<ChatMessage> sender = List<ChatMessage>();
+///here is Where the user can write chat and send it to the database
+///Author: Suada Fejzovic
 
 TextEditingController textFieldController = TextEditingController();
 bool isWriting = false;
@@ -256,6 +250,8 @@ class FirebaseApi {
     final mess = FirebaseFirestore.instance.collection('Messages');
     print("SUCCESSFUL");
 
+    ///First Chat Try
+
     /*
 await mess.add(newMessage.toJson());
 
@@ -319,6 +315,95 @@ String getConversationID(String userID, String peerID) {
  } 
 
  */
+  ///Second Chat try
+
+/*import 'package:flutter/material.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
+
+Future<void> main() async {
+  const api= "evdbn5wqrjah";
+  const Token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMGtOZ3l4N1o1R2h1dVNuYzg5dHFxR0dOb0RMMiJ9.RQ4tP_T2cwlsPEDUUfZblTPcWKUEd7akdF5qFbDLX3o";
+
+  final client = StreamChatClient(
+    api
+    logLevel: Level.INFO,
+  );
+
+  await client.connectUser(
+    User(
+      id: "0kNgyx7Z5GhuuSnc89tqqGGNoDL2",
+    ),
+    Token,
+  );
+
+ final channel = client.channel(
+    'messaging',
+    id: 'Sam Morello'
+    extraData: {
+      "name": "Sam Morello",
+    },
+  );
+
+  channel.watch();
+
+  runApp(MyApp(client, channel));
+}
+
+class MyApp extends StatelessWidget {
+ 
+  final StreamChatClient client;
+
+ 
+  final Channel channel;
+
+ 
+  MyApp(this.client, this.channel);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = ThemeData.dark().copyWith(
+      accentColor: Color(0x3b93c3),
+    );
+    return MaterialApp(
+      builder: (context, widget) {
+        return StreamChat(
+          child: widget,
+          client: client,
+          streamChatThemeData: StreamChatThemeData.fromTheme(theme),
+        );
+      },
+      home: StreamChannel(
+        channel: channel,
+        child: ChannelP(),
+      ),
+    );
+  }
+}
+
+/// Displays the list of messages inside the channel
+class ChannelP extends StatelessWidget {
+  const ChannelP({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: ChannelHeader(
+        showBackButton: false,
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: MessageListView(),
+          ),
+          MessageInput(),
+        ],
+      ),
+    );
+  }
+}*/
   String getConversationID(String userID, String peerID) {
     return userID.hashCode <= peerID.hashCode
         ? userID + '_' + peerID

@@ -1,15 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gomama_v2/services/Database.dart';
-import 'package:gomama_v2/setting.dart';
-import 'package:flutter/material.dart';
-import 'package:gomama_v2/states/CurrentUser.dart';
 
 import 'ChatConvo.dart';
 
+///Create Chat Room
+///Author: Suada Fejzovic
 class ChatPageRoom extends StatefulWidget {
   @override
   _ChatPageRoomState createState() => _ChatPageRoomState();

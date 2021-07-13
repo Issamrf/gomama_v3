@@ -9,7 +9,6 @@ import 'package:gomama_v2/setting.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../ChatConvo.dart';
-import '../../editProfile.dart';
 
 ///This Class shows the Profile and of the current User
 ///Author: Issam Rafiq
@@ -24,8 +23,6 @@ class OtherProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CalendarFormat format = CalendarFormat.month;
-    var uID =
-        Provider.of<CurrentUser>(context, listen: false).getCurrentUser.uid;
 
     return Scaffold(
       appBar: AppBar(

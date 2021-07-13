@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gomama_v2/financeChoice.dart';
 import 'package:gomama_v2/setting.dart';
 
+/// Here is where the user can see more details about the financial options
+///Author: Nora Kolasinac
+
 class FinanceHelp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
