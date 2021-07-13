@@ -5,19 +5,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gomama_v2/services/ServiceRoot.dart';
 import 'states/CurrentUser.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 
-
-Future <void> main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Firebase.initializeApp();
   runApp(HomePage());
 }
-
-//TODO Profile bild
-//TODO Geburtstag fertig machen für weitere jahre in Firebase speicher ??
-//TODO Chat bereich erstellen -.-
-//TODO Firebase mit IOS verbinden Issam
-//TODO Design optimieren (zusammen)
 
 class HomePage extends StatelessWidget {
   @override

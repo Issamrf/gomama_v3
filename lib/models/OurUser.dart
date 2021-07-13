@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gomama_v2/states/Utils.dart';
 
+///our User class where all variables needed in the app
+///Author: Issam Rafiq
 class OurUserField {
   static const createdTime = 'createdTime';
 }
@@ -51,6 +53,6 @@ class OurUser {
         "kid": kids,
         "email": email,
         "city": city,
-        "about": about,
+        "about": about = "",
       };
 }

@@ -5,6 +5,8 @@ import 'package:gomama_v2/pages/pagestart/StartPage.dart';
 import 'package:gomama_v2/states/CurrentUser.dart';
 import 'package:provider/provider.dart';
 
+///in this Class is where the User Can reset the password.
+///Author: Issam Rafiq
 class PasswordReset extends StatefulWidget {
   @override
   _PasswordResetState createState() => _PasswordResetState();

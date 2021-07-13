@@ -3,9 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gomama_v2/chat.dart';
 import 'package:gomama_v2/help.dart';
-import 'package:gomama_v2/pages/pagebottomnavigation/Location.dart';
+import 'package:gomama_v2/pages/pagebottomnavigation/OtherUserProfile.dart';
+import 'package:gomama_v2/pages/pagebottomnavigation/SearchUser.dart';
 import 'package:gomama_v2/pages/pagebottomnavigation/Profile.dart';
 
+///This Class ist to navigate to the other pages in the app.
+///Author: Suada
 class Menu extends StatefulWidget {
   @override
   _MenuState createState() => _MenuState();
@@ -15,9 +18,9 @@ class _MenuState extends State<Menu> {
   int pressedIndex = 0;
 
   final List<Widget> screenOptions = [
-    Location(),
+    Search(),
     Profile(),
-    ChatPage(),
+    ChatPageRoom(),
     HelpPage(),
   ];
 

@@ -6,6 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:gomama_v2/models/OurUser.dart';
 import 'package:gomama_v2/services/Database.dart';
 
+/// This Class have the current User informations to get them from the database.
+/// it have the ability examin the credentials if the user is trying to connect to the database.
+/// Author: Issam Rafiq.
 class CurrentUser extends ChangeNotifier {
   OurUser currentUser = OurUser();
   OurUser get getCurrentUser => currentUser;
@@ -25,8 +28,6 @@ class CurrentUser extends ChangeNotifier {
     try {
       User firebaseUser = auth.currentUser;
       if (firebaseUser != null) {
-        /*currentUser.uid = firebaseUser.uid;
-        currentUser.email = firebaseUser.email;*/
         currentUser = await Database().getUserInfo(firebaseUser.uid);
         if (currentUser != null) {
           returnValue = "success";
@@ -94,8 +95,6 @@ class CurrentUser extends ChangeNotifier {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
           email: email, password: password);
 
-      /* currentUser.uid = userCredential.user.uid;
-      currentUser.name = userCredential.user.email;*/
       currentUser = await Database().getUserInfo(auth.currentUser.uid);
       if (currentUser != null) {
         returnValue = "success";
@@ -115,11 +114,10 @@ class CurrentUser extends ChangeNotifier {
     }
   }
 
-  void setOurUser(List<OurUser> ourUser){
+  void setOurUser(List<OurUser> ourUser) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ourUser = ourUser;
       notifyListeners();
     });
   }
-
 }

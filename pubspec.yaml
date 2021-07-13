@@ -38,7 +38,8 @@ dependencies:
   date_format: ^2.0.2
   google_fonts: ^2.1.0
   http: ^0.13.3
-
+  shared_preferences: ^2.0.6
+  stream_chat_flutter: ^2.0.0-nullsafety.9
   
   
 

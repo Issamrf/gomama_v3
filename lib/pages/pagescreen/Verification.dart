@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:gomama_v2/pages/pagescreen/Menu.dart';
 import 'package:gomama_v2/pages/pagestart/StartPage.dart';
 
+///in this Class We can Verify the User Email
+///Author: Issam Rafiq
 class Verification extends StatefulWidget {
   @override
   _VerificationState createState() => _VerificationState();

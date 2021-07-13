@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gomama_v2/models/OurUser.dart';
 
@@ -62,5 +64,29 @@ class Database {
       print(e);
     }
     return retVal;
+  }
+
+  Future<QuerySnapshot> getUser(
+    String itemsearched,
+  ) async {
+    return firestore
+        .collection("Users")
+        .where("city", isEqualTo: itemsearched)
+        .get();
+  }
+
+  Future<QuerySnapshot> getUserPlz(
+    String plz,
+  ) async {
+    return firestore
+        .collection("Users")
+        .where("plz", isLessThanOrEqualTo: plz)
+        .get();
+  }
+
+  createChat(String convoID, chatMap) {
+    firestore.collection("Messages").doc(convoID).set(chatMap).catchError((e) {
+      print(e.toString());
+    });
   }
 }

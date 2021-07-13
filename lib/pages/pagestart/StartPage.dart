@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gomama_v2/pages/login/Login.dart';
 import 'package:gomama_v2/pages/pagesignup/SignUp.dart';
 
+///Startpage is where the user decide wether to sign up or Sign in
+///Author: Issam Rafiq
 
 class StartPage extends StatelessWidget {
   @override
@@ -34,14 +36,6 @@ class StartPage extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    Text(
-                      "Motivationen ",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.grey[700],
-                        fontSize: 20,
-                      ),
-                    ),
                   ],
                 ),
                 Container(
@@ -58,10 +52,8 @@ class StartPage extends StatelessWidget {
                       height: 60,
                       //navigation
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Login()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Login()));
                       },
                       //  shape of login Button
                       shape: RoundedRectangleBorder(
@@ -79,10 +71,8 @@ class StartPage extends StatelessWidget {
                       minWidth: double.infinity,
                       height: 60,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUp()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignUp()));
                       },
                       color: Color(0xff3b93c3),
                       shape: RoundedRectangleBorder(

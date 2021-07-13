@@ -1,16 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gomama_v2/pages/pagestart/StartPage.dart';
 
 import 'package:gomama_v2/states/CurrentUser.dart';
+
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gomama_v2/setting.dart';
-import 'package:gomama_v2/user.dart';
 
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../editProfile.dart';
 
+///This Class shows the Profile and of the current User
+///Author: Issam Rafiq
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -20,16 +23,15 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     CalendarFormat format = CalendarFormat.month;
-    CollectionReference users = FirebaseFirestore.instance.collection('Users');
-    var uID =
-        Provider.of<CurrentUser>(context, listen: false).getCurrentUser.uid;
-    Future<void> refresh() async {
-      Provider.of<CurrentUser>(context).currentUser;
-    }
 
-    final user = UserInfoProfile.initUser;
     CurrentUser me = Provider.of<CurrentUser>(context) as CurrentUser;
     var about = me.currentUser.about;
+
+    Future<void> refresh() async {
+      me;
+
+      setState(() {});
+    }
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -47,8 +49,19 @@ class _ProfileState extends State<Profile> {
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
+          onPressed: () async {
+            CurrentUser currentUser =
+                Provider.of<CurrentUser>(context, listen: false);
+            String returnString = await currentUser.signOut();
+            if (returnString == "success") {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => StartPage(),
+                ),
+                (route) => false,
+              );
+            }
           },
           icon: Icon(
             Icons.logout,
@@ -78,7 +91,6 @@ class _ProfileState extends State<Profile> {
             physics: BouncingScrollPhysics(),
             children: [
               ProfileWidget(
-                imageDirection: user.imagePath,
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => EditProfile()));
@@ -141,57 +153,14 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-Widget aboutBuilder(BuildContext context, UserProfile user) {
-  CollectionReference users = FirebaseFirestore.instance.collection('Users');
-  var uID = Provider.of<CurrentUser>(context, listen: false).getCurrentUser.uid;
-
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Über mich.',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 16),
-        FutureBuilder<DocumentSnapshot>(
-          future: users.doc(uID).get(),
-          /*Fehler*/
-          builder:
-              (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              Map<String, dynamic> data =
-                  snapshot.data.data() as Map<String, dynamic>;
-              print(snapshot.data.data() as Map<String, dynamic>);
-              return Center(
-                  child: Text(
-                "${data['about']}",
-                style: TextStyle(fontSize: 16, height: 1.4),
-              ));
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
-      ],
-    ),
-  );
-}
-
 class AgeKids extends StatelessWidget {
-  final user = UserInfoProfile.initUser;
   CollectionReference users = FirebaseFirestore.instance.collection('Users');
 
   @override
   Widget build(BuildContext context) {
-    var uID =
-        Provider.of<CurrentUser>(context, listen: false).getCurrentUser.uid;
     CurrentUser me = Provider.of<CurrentUser>(context) as CurrentUser;
-    var kidsNumber = me.currentUser.kids;
-    var age = me.currentUser.birth;
+    final String kidsNumber = me.currentUser.kids;
+    String age = me.currentUser.birth;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
@@ -229,7 +198,6 @@ class AgeKids extends StatelessWidget {
 }
 
 class ProfileWidget extends StatelessWidget {
-  final user = UserInfoProfile.initUser;
   final String imageDirection;
   final VoidCallback onPressed;
   final bool ifEdit;
@@ -244,8 +212,7 @@ class ProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CurrentUser me = Provider.of<CurrentUser>(context) as CurrentUser;
-    //String me2 = Provider.of<CurrentUser>(context).getCurrentUser.name;
-    //String me3 = Provider.of<CurrentUser>(context).auth.currentUser.displayName;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

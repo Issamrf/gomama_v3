@@ -4,6 +4,8 @@ import 'package:gomama_v2/pages/pagescreen/Menu.dart';
 import 'package:gomama_v2/states/CurrentUser.dart';
 import 'package:provider/provider.dart';
 
+///this Class is to delete the Stack and log out the User from the app and the Server
+///Author: Issam Rafiq
 enum AuthStatus { notLoggedIn, loggedIn }
 
 class ServiceRoot extends StatefulWidget {

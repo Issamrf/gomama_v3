@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gomama_v2/pages/pagescreen/Menu.dart';
 import 'package:gomama_v2/pages/pagescreen/PasswordReset.dart';
 import 'package:gomama_v2/states/CurrentUser.dart';
+
 import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
@@ -10,16 +11,14 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController tecEmail =
-      TextEditingController(text: "rafiq@stud.fra-uas.de");
-  TextEditingController tecPass = TextEditingController(text: "12345678");
+  TextEditingController tecEmail = TextEditingController();
+  TextEditingController tecPass = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool checkCurrentPasswordValid = true;
 
   @override
   Widget build(BuildContext context) {
-    CurrentUser currentUser = Provider.of<CurrentUser>(context, listen: false);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -126,6 +125,7 @@ class _LoginState extends State<Login> {
     try {
       String returnString =
           await currentUser.loginUSerWithEmail(email, password);
+
       if (returnString == "success") {
         Navigator.of(context).push(
           MaterialPageRoute(
@@ -236,39 +236,3 @@ class _LoginState extends State<Login> {
         ),
       );
 }
-
-/*
-if (formKey.currentState.validate()) {
-if (formPassword == formPasswordConfirm) {
-signUpUser(
-formEmail,
-formPassword,
-context,
-formPlz,
-formKids,
-formName,
-formCity,
-);
-formKey.currentState.save();
-final message = 'Name: $formName\nEmail: $formEmail';
-final snackBar = SnackBar(
-content: Text(
-message,
-style: TextStyle(fontSize: 20),
-),
-backgroundColor: Colors.green,
-);
-ScaffoldMessenger.of(context).showSnackBar(snackBar);
-} else {
-ScaffoldMessenger.of(context).showSnackBar(
-SnackBar(
-content: Text(
-"Passwords do not match",
-style: TextStyle(fontSize: 20),
-),
-backgroundColor: Colors.red,
-duration: Duration(seconds: 2),
-),
-);
-}
-}*/

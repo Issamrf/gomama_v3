@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:gomama_v2/pages/pagebottomnavigation/Profile.dart';
 import 'package:gomama_v2/services/Database.dart';
 import 'package:gomama_v2/states/CurrentUser.dart';
-import 'package:gomama_v2/user.dart';
+
 import 'package:provider/provider.dart';
 
+///This Class is to Edit the profil data on the Database
+///Author: Issam Rafiq
 class EditProfile extends StatefulWidget {
   @override
   _EditProfile createState() => _EditProfile();
@@ -15,6 +17,7 @@ class _EditProfile extends State<EditProfile> {
   List userProfilesList = [];
   var userID;
   CurrentUser currentUser;
+  Profile profile = Profile();
 
   TextEditingController formAbout = TextEditingController();
   TextEditingController formBirthday = TextEditingController();
@@ -37,7 +40,6 @@ class _EditProfile extends State<EditProfile> {
     this.formKids.text = me.currentUser.kids;
     this.formPlz.text = me.currentUser.plz;
 
-    final user = UserInfoProfile.initUser;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
@@ -72,7 +74,6 @@ class _EditProfile extends State<EditProfile> {
             physics: BouncingScrollPhysics(),
             children: [
               ProfileWidget(
-                imageDirection: user.imagePath,
                 ifEdit: true,
                 onPressed: () async {},
               ),
@@ -188,9 +189,13 @@ class _EditProfile extends State<EditProfile> {
                   minWidth: double.infinity,
                   height: 60,
                   //firebase setting
-                  onPressed: () {
+                  onPressed: () async {
+                    Navigator.pop(context);
                     submitAction(context);
+
+                    setState(() {});
                   },
+
                   color: Color(0xff3b93c3),
                   elevation: 0,
                   shape: RoundedRectangleBorder(

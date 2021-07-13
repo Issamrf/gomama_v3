@@ -2,9 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gomama_v2/pages/pagescreen/Verification.dart';
 import 'package:gomama_v2/states/CurrentUser.dart';
+import 'package:gomama_v2/states/SetAndGetChat.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
+import '../../termConditions.dart';
+
+///This Class Contains the UI and the conditions of signin Up
+///Author: Issam Rafiq
 class SignUp extends StatefulWidget {
   @override
   _SignUpState createState() => _SignUpState();
@@ -138,7 +143,7 @@ class _SignUpState extends State<SignUp> {
                   Row(
                     children: [
                       SizedBox(
-                        width: 18,
+                        width: 5,
                       ),
                       Material(
                         child: Checkbox(
@@ -152,10 +157,15 @@ class _SignUpState extends State<SignUp> {
                           },
                         ),
                       ),
-                      Text(
-                        'ich akzeptiere die Nutzungsbedingungen',
-                        style: TextStyle(fontSize: 13.0),
-                      ),
+                      FlatButton(
+                          child: Text('Ich akzeptiere die Nutzungsbedingungen',
+                              style: TextStyle(fontSize: 12.0)),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TermConditions()));
+                          }),
                     ],
                   ),
                 ],
@@ -174,6 +184,10 @@ class _SignUpState extends State<SignUp> {
     try {
       String returnString = await currentUser.signUpUser(
           email, password, plz, year1, kids, name, city);
+      SetAndGetChat.isUserLoggedin(true);
+      SetAndGetChat.saveUseremail(email);
+      SetAndGetChat.saveUserName(name);
+
       /* User firebaseUser = FirebaseAuth.instance.currentUser;
       await firebaseUser.sendEmailVerification();*/
 
